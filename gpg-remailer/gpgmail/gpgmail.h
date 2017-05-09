@@ -28,6 +28,7 @@ class GPGMail: public Mailer<GPGMail>
                 std::string const &step);
 
     private:
+        std::string headers() const;
         static std::string makeBoundary();
 
             // Called through MailerBase:

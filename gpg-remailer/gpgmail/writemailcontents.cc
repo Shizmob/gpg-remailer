@@ -8,20 +8,21 @@ void GPGMail::writeMailContents(string const &mailData) const
     ofstream out;
     Exception::open(out, d_mailName);
 
-    out << "\n"                         // create the mail to send.
-        "--" << d_boundary << "\n"
-        "Content-Type: application/pgp-encrypted\n"
-        "Content-Transfer-Encoding: 7bit\n"
-        "\n"
-        "Version: 1\n"
-        "\n"
-        "--" << d_boundary << "\n"
-        "Content-Type: application/octet-stream; name=gpg.asc\n"
-        "Content-Transfer-Encoding: 7bit\n"
-        "\n" <<
-        in.rdbuf() << "\n"
-        "\n"
-        "--" << d_boundary << "--\n";
+    out << headers() << // create the mail to send.
+        "\r\n"
+        "--" << d_boundary << "\r\n"
+        "Content-Type: application/pgp-encrypted\r\n"
+        "Content-Transfer-Encoding: 7bit\r\n"
+        "\r\n"
+        "Version: 1\r\n"
+        "\r\n"
+        "--" << d_boundary << "\r\n"
+        "Content-Type: application/octet-stream; name=gpg.asc\r\n"
+        "Content-Transfer-Encoding: 7bit\r\n"
+        "\r\n" <<
+        in.rdbuf() << "\r\n"
+        "\r\n"
+        "--" << d_boundary << "--\r\n";
 }
 
 

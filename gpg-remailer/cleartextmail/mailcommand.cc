@@ -2,8 +2,5 @@
 
 string ClearTextMail::mailCommand(string const &recipient) const
 {
-    return
-        "/usr/bin/mail -s '" + subject() + "' "
-                "-a \"Reply-To: " + d_replyTo + "\" " +
-                headers() + " " + recipient;
+    return "/usr/sbin/sendmail " + recipient;
 }

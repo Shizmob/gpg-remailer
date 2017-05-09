@@ -8,5 +8,5 @@ void ClearTextMail::writeMailContents(std::string const &mailData) const
     ofstream out;
     Exception::open(out, d_mailName);
 
-    out << in.rdbuf();
+    out << headers() << "\r\n" << in.rdbuf();
 }
